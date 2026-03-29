@@ -3,82 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MP IMPORTS — Street Style & Prime Imports</title>
+  <title>MT IMPORTS — Premium Streetwear & Imports</title>
   <meta name="description" content="Importados premium com a pegada do street. Tênis, bolsas, roupas e jaquetas exclusivos.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Boogaloo&family=Inter:wght@300;400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Newsreader:ital,wght@0,400;0,600;1,400;1,600&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#b8c3ff",
+            "primary-container": "#2e5bff",
+            "on-primary": "#0a0f42",
+            background: "#0a0a0a",
+            "surface-container-lowest": "#0e0e0e",
+            "surface-container-low": "#1c1b1b",
+            "surface-container": "#201f1f",
+            "surface-container-highest": "#353534",
+            "outline-variant": "#434656",
+            "on-surface-variant": "#c4c5d9",
+            "on-surface": "#e5e2e1",
+          },
+          fontFamily: {
+            headline: ["Space Grotesk", "sans-serif"],
+            body: ["Newsreader", "serif"],
+            label: ["Manrope", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body class="bg-background text-on-surface font-label overflow-x-hidden" style="background:#0a0a0a;color:#e5e2e1;">
   <div id="announcement-placeholder"></div>
   <div id="header-placeholder"></div>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg-text">MP</div>
-    <div class="container hero-content">
-      <span class="hero-label"><i class="ph-bold ph-lightning"></i> PRIME DROPS</span>
-      <h1 class="hero-title">A intersecção do<br><span class="hero-accent">STREET</span> e do <span class="hero-accent-pink">PRIME</span></h1>
-      <p class="hero-sub">Arquitetura brutalista e movimento urbano. Silhuetas de precisão para o nômade moderno.</p>
-      <div class="hero-ctas">
-        <a href="/categoria.html?cat=tenis" class="btn-hero-primary">VER COLEÇÃO <i class="ph-bold ph-arrow-right"></i></a>
-        <a href="/categoria.html?cat=bolsas" class="btn-hero-secondary">NOVIDADES</a>
+  <section class="bg-texture-hero min-h-screen flex items-center relative overflow-hidden pt-16">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(46,91,255,0.08) 0%,transparent 60%);pointer-events:none;"></div>
+    <div style="max-width:1280px;margin:0 auto;padding:0 20px;width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:48px;min-height:calc(100vh - 64px);">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(46,91,255,0.1);border:1px solid rgba(46,91,255,0.3);border-radius:999px;padding:6px 14px;margin-bottom:24px;">
+          <span class="material-symbols-outlined" style="font-size:14px;color:#b8c3ff;">bolt</span>
+          <span style="font-family:'Manrope',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#b8c3ff;">Prime Drops</span>
+        </div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(48px,6vw,80px);font-weight:900;text-transform:uppercase;line-height:0.95;letter-spacing:-0.02em;color:#e5e2e1;margin-bottom:24px;" class="text-glow">
+          A intersecção<br>
+          <span style="color:#b8c3ff;">do STREET</span><br>
+          e do PRIME
+        </h1>
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:18px;color:#c4c5d9;line-height:1.6;max-width:440px;margin-bottom:36px;">
+          Arquitetura brutalista e movimento urbano. Silhuetas de precisão para o nômade moderno.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/categoria.html?cat=tenis" class="btn-prime" style="padding:14px 28px;background:#2e5bff;border-radius:12px;color:#fff;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+            Ver Coleção <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+          </a>
+          <a href="/categoria.html?cat=bolsas" class="btn-prime" style="padding:14px 28px;background:transparent;border:1px solid #434656;border-radius:12px;color:#c4c5d9;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;">
+            Novidades
+          </a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;align-items:center;">
+        <div style="width:100%;max-width:480px;aspect-ratio:1/1;border-radius:32px;background:#1c1b1b;border:1px solid #434656;overflow:hidden;position:relative;">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=800&fit=crop" alt="Prime Drop" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
+          <div style="position:absolute;bottom:24px;left:24px;right:24px;background:rgba(10,10,10,0.75);backdrop-filter:blur(12px);border:1px solid rgba(67,70,86,0.5);border-radius:16px;padding:16px;">
+            <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#c4c5d9;margin-bottom:4px;">Drop Exclusivo</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#e5e2e1;">Coleção 2026</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="hero-drip"></div>
   </section>
 
   <!-- CATEGORIES -->
-  <section class="categories-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">CATEGORIAS</h2>
-        <div class="section-line"></div>
+  <section style="padding:80px 0;background:#0a0a0a;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 20px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:12px;">
+        <div>
+          <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#b8c3ff;margin-bottom:8px;">Archive</div>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:900;text-transform:uppercase;color:#e5e2e1;letter-spacing:-0.01em;">Categorias</h2>
+        </div>
+        <a href="/categoria.html?cat=tenis" style="font-family:'Manrope',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b8c3ff;text-decoration:none;display:flex;align-items:center;gap:4px;">
+          Ver Tudo <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+        </a>
       </div>
-      <div class="categories-grid">
-        <a href="/categoria.html?cat=tenis" class="category-card tenis">
-          <div class="cat-img-wrap">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=400&fit=crop" alt="Tênis" loading="lazy">
-            <div class="cat-overlay"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+        <a href="/categoria.html?cat=tenis" class="interactive-card" style="border-radius:20px;overflow:hidden;display:block;text-decoration:none;background:#1c1b1b;border:1px solid #434656;">
+          <div style="aspect-ratio:4/3;overflow:hidden;background:#201f1f;position:relative;">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=400&fit=crop" alt="Tênis" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
           </div>
-          <div class="cat-info">
-            <span class="cat-count">93 produtos</span>
-            <h3 class="cat-name">TÊNIS</h3>
-            <span class="cat-sub">Air Force · Dunk · Jordan</span>
-          </div>
-        </a>
-        <a href="/categoria.html?cat=bolsas" class="category-card bolsas">
-          <div class="cat-img-wrap">
-            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=400&fit=crop" alt="Bolsas" loading="lazy">
-            <div class="cat-overlay"></div>
-          </div>
-          <div class="cat-info">
-            <span class="cat-count">11 produtos</span>
-            <h3 class="cat-name">BOLSAS</h3>
-            <span class="cat-sub">Gucci · LV · YSL · Tory Burch</span>
+          <div style="padding:20px;">
+            <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#c4c5d9;margin-bottom:4px;">93 produtos</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:#e5e2e1;margin-bottom:4px;">Tênis</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:10px;color:#c4c5d9;opacity:0.7;">Air Force · Dunk · Jordan</div>
           </div>
         </a>
-        <a href="/categoria.html?cat=jaquetas" class="category-card jaquetas">
-          <div class="cat-img-wrap">
-            <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&h=400&fit=crop" alt="Jaquetas" loading="lazy">
-            <div class="cat-overlay"></div>
+        <a href="/categoria.html?cat=bolsas" class="interactive-card" style="border-radius:20px;overflow:hidden;display:block;text-decoration:none;background:#1c1b1b;border:1px solid #434656;">
+          <div style="aspect-ratio:4/3;overflow:hidden;background:#201f1f;position:relative;">
+            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=400&fit=crop" alt="Bolsas" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
           </div>
-          <div class="cat-info">
-            <span class="cat-count">8 produtos</span>
-            <h3 class="cat-name">JAQUETAS</h3>
-            <span class="cat-sub">LV · Palm Angels · Supreme</span>
+          <div style="padding:20px;">
+            <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#c4c5d9;margin-bottom:4px;">11 produtos</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:#e5e2e1;margin-bottom:4px;">Bolsas</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:10px;color:#c4c5d9;opacity:0.7;">Gucci · LV · YSL · Tory Burch</div>
           </div>
         </a>
-        <a href="/categoria.html?cat=roupas" class="category-card roupas">
-          <div class="cat-img-wrap">
-            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=400&fit=crop" alt="Roupas" loading="lazy">
-            <div class="cat-overlay"></div>
+        <a href="/categoria.html?cat=jaquetas" class="interactive-card" style="border-radius:20px;overflow:hidden;display:block;text-decoration:none;background:#1c1b1b;border:1px solid #434656;">
+          <div style="aspect-ratio:4/3;overflow:hidden;background:#201f1f;position:relative;">
+            <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&h=400&fit=crop" alt="Jaquetas" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
           </div>
-          <div class="cat-info">
-            <span class="cat-count">13 produtos</span>
-            <h3 class="cat-name">ROUPAS</h3>
-            <span class="cat-sub">NBA · Palm Angels · Fear of God</span>
+          <div style="padding:20px;">
+            <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#c4c5d9;margin-bottom:4px;">8 produtos</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:#e5e2e1;margin-bottom:4px;">Jaquetas</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:10px;color:#c4c5d9;opacity:0.7;">LV · Palm Angels · Supreme</div>
+          </div>
+        </a>
+        <a href="/categoria.html?cat=roupas" class="interactive-card" style="border-radius:20px;overflow:hidden;display:block;text-decoration:none;background:#1c1b1b;border:1px solid #434656;">
+          <div style="aspect-ratio:4/3;overflow:hidden;background:#201f1f;position:relative;">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=400&fit=crop" alt="Roupas" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;">
+          </div>
+          <div style="padding:20px;">
+            <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#c4c5d9;margin-bottom:4px;">13 produtos</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:#e5e2e1;margin-bottom:4px;">Roupas</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:10px;color:#c4c5d9;opacity:0.7;">NBA · Palm Angels · Fear of God</div>
           </div>
         </a>
       </div>
@@ -86,15 +137,18 @@
   </section>
 
   <!-- FEATURED PRODUCTS -->
-  <section class="featured-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">PRIME <span style="color:#FF1493;">DROPS</span></h2>
-        <span class="new-badge">NOVIDADES</span>
-        <div class="section-line"></div>
+  <section style="padding:80px 0;background:#0e0e0e;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 20px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:12px;">
+        <div>
+          <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#b8c3ff;margin-bottom:8px;">Destaque</div>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:900;text-transform:uppercase;color:#e5e2e1;letter-spacing:-0.01em;">Prime Drops</h2>
+        </div>
+        <a href="/categoria.html?cat=tenis" style="font-family:'Manrope',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b8c3ff;text-decoration:none;display:flex;align-items:center;gap:4px;">
+          Ver Todos <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+        </a>
       </div>
-      <div class="products-grid" id="featured-grid">
-        <!-- Skeletons -->
+      <div id="featured-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
         <div class="product-skeleton"></div>
         <div class="product-skeleton"></div>
         <div class="product-skeleton"></div>
@@ -103,62 +157,72 @@
         <div class="product-skeleton"></div>
         <div class="product-skeleton"></div>
         <div class="product-skeleton"></div>
-      </div>
-      <div style="text-align:center;margin-top:40px;">
-        <a href="/categoria.html?cat=tenis" class="btn-view-all">VER TODOS OS PRODUTOS <i class="ph-bold ph-arrow-right"></i></a>
       </div>
     </div>
   </section>
 
-  <!-- BANNERS ROW -->
-  <section class="banners-section">
-    <div class="container">
-      <div class="banners-grid">
-        <a href="/categoria.html?cat=tenis" class="banner-card men">
-          <div class="banner-label">MEN</div>
-          <div class="banner-sub">INDUSTRIAL UTILITY</div>
-          <i class="ph-bold ph-sneaker banner-icon"></i>
+  <!-- BENTO BANNERS -->
+  <section style="padding:80px 0;background:#0a0a0a;" class="bg-texture-bento">
+    <div style="max-width:1280px;margin:0 auto;padding:0 20px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+        <a href="/categoria.html?cat=tenis" class="interactive-card" style="display:block;text-decoration:none;border-radius:24px;overflow:hidden;background:#1c1b1b;border:1px solid #434656;padding:36px 28px;grid-column:span 1;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;">
+          <div style="position:absolute;top:24px;right:24px;"><span class="material-symbols-outlined" style="font-size:40px;color:rgba(184,195,255,0.15);">storefront</span></div>
+          <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c4c5d9;margin-bottom:8px;">Men</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;color:#e5e2e1;line-height:1;">Industrial<br>Utility</div>
         </a>
-        <a href="/categoria.html?cat=bolsas" class="banner-card women">
-          <div class="banner-label">WOMEN</div>
-          <div class="banner-sub">PRIME EDITORIAL</div>
-          <i class="ph-bold ph-handbag banner-icon"></i>
+        <a href="/categoria.html?cat=bolsas" class="interactive-card" style="display:block;text-decoration:none;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#1c1b1b,#201f1f);border:1px solid rgba(184,195,255,0.15);padding:36px 28px;grid-column:span 1;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;">
+          <div style="position:absolute;top:24px;right:24px;"><span class="material-symbols-outlined" style="font-size:40px;color:rgba(184,195,255,0.2);">handbag</span></div>
+          <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#b8c3ff;margin-bottom:8px;">Women</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;color:#e5e2e1;line-height:1;">Prime<br>Editorial</div>
         </a>
-        <a href="/categoria.html?cat=roupas" class="banner-card unisex">
-          <div class="banner-label">UNISEX</div>
-          <div class="banner-sub">VIEW ALL <i class="ph-bold ph-arrow-right"></i></div>
-          <i class="ph-bold ph-t-shirt banner-icon"></i>
+        <a href="/categoria.html?cat=roupas" class="interactive-card" style="display:block;text-decoration:none;border-radius:24px;overflow:hidden;background:#1c1b1b;border:1px solid #434656;padding:36px 28px;grid-column:span 1;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;">
+          <div style="position:absolute;top:24px;right:24px;"><span class="material-symbols-outlined" style="font-size:40px;color:rgba(184,195,255,0.15);">checkroom</span></div>
+          <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c4c5d9;margin-bottom:8px;">Unisex</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;color:#e5e2e1;line-height:1;">View<br>All →</div>
         </a>
       </div>
     </div>
   </section>
 
   <!-- VAULT / LIMITED -->
-  <section class="vault-section">
-    <div class="container">
-      <div class="vault-header">
-        <span class="vault-label"><i class="ph-bold ph-lock"></i> VAULT ACCESS</span>
-        <h2 class="vault-title">LIMITED<br>EDITION</h2>
+  <section style="padding:80px 0;" class="bg-texture-vault">
+    <div style="max-width:1280px;margin:0 auto;padding:0 20px;">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:16px;">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(184,195,255,0.08);border:1px solid rgba(184,195,255,0.2);border-radius:999px;padding:5px 12px;margin-bottom:12px;">
+            <span class="material-symbols-outlined" style="font-size:12px;color:#b8c3ff;">lock</span>
+            <span style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#b8c3ff;">Vault Access</span>
+          </div>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:900;text-transform:uppercase;color:#e5e2e1;letter-spacing:-0.02em;line-height:0.95;" class="text-glow">Limited<br>Edition</h2>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button id="vault-prev" class="btn-prime" style="width:44px;height:44px;background:#1c1b1b;border:1px solid #434656;border-radius:12px;color:#c4c5d9;cursor:pointer;">
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <button id="vault-next" class="btn-prime" style="width:44px;height:44px;background:#1c1b1b;border:1px solid #434656;border-radius:12px;color:#c4c5d9;cursor:pointer;">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
       </div>
-      <div class="vault-slider-wrap">
-        <button class="vault-arrow left" id="vault-prev"><i class="ph-bold ph-caret-left"></i></button>
-        <div class="vault-slider" id="vault-slider"></div>
-        <button class="vault-arrow right" id="vault-next"><i class="ph-bold ph-caret-right"></i></button>
-      </div>
+      <div id="vault-slider" style="display:flex;gap:16px;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth;padding-bottom:4px;"></div>
     </div>
   </section>
 
-  <!-- CONSORTIUM -->
-  <section class="consortium-section">
-    <div class="container consortium-inner">
-      <div>
-        <h2 class="consortium-title">JOIN THE<br>CONSORTIUM</h2>
-        <p class="consortium-sub">Acesso antecipado a drops, itens de arquivo e eventos exclusivos para membros. Sem spam. Só imports.</p>
+  <!-- CONSORTIUM / NEWSLETTER -->
+  <section style="padding:80px 0;background:#0e0e0e;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 20px;">
+      <div style="max-width:600px;margin:0 auto;text-align:center;">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:900;text-transform:uppercase;color:#e5e2e1;letter-spacing:-0.02em;line-height:0.95;margin-bottom:16px;">Join the<br>Consortium</h2>
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:16px;color:#c4c5d9;line-height:1.6;margin-bottom:32px;">
+          Acesso antecipado a drops, itens de arquivo e eventos exclusivos. Sem spam. Só imports.
+        </p>
+        <form onsubmit="joinConsortium(event)" style="display:flex;gap:8px;max-width:400px;margin:0 auto;">
+          <input type="email" placeholder="seu@email.com" class="input-prime" style="flex:1;background:#201f1f;border:1px solid #434656;border-radius:12px;padding:12px 16px;color:#e5e2e1;font-family:'Manrope',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;" required>
+          <button type="submit" class="btn-prime" style="padding:12px 20px;background:#2e5bff;border:none;border-radius:12px;color:#fff;font-family:'Manrope',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px;">
+            Join <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+          </button>
+        </form>
       </div>
-      <form class="consortium-form" onsubmit="joinConsortium(event)">
-        <input type="email" placeholder="seu@email.com" class="consortium-input" required>
-        <button type="submit" class="consortium-btn">JOIN <i class="ph-bold ph-arrow-right"></i></button>
-      </form>
     </div>
   </section>
 
@@ -175,21 +239,22 @@
     function renderProductCard(p) {
       const discount = p.original_price ? Math.round((1 - p.price / p.original_price) * 100) : 0;
       return `
-        <div class="product-card">
-          <div class="product-img-wrap">
-            ${p.badge ? `<span class="badge badge-${p.badge.toLowerCase()}">${p.badge === 'NOVO' ? 'NOVO' : p.badge}</span>` : ''}
-            <img src="${p.image_url}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x400/14141f/7B2FBE?text=MP'">
-            <button class="quick-add-btn" onclick="event.stopPropagation();CartState.add(${p.id},null,1)">
-              <i class="ph-bold ph-shopping-cart"></i> ADICIONAR
-            </button>
+        <div class="interactive-card product-card-group" style="background:#1c1b1b;border:1px solid #434656;border-radius:20px;overflow:hidden;cursor:pointer;" onclick="location.href='/produto.html?id=${p.id}'">
+          <div style="position:relative;aspect-ratio:1/1;background:#201f1f;overflow:hidden;">
+            ${p.badge ? `<span style="position:absolute;top:12px;left:12px;z-index:10;background:#2e5bff;color:#fff;font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px;">${p.badge}</span>` : ''}
+            <img src="${p.image_url}" alt="${p.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='https://placehold.co/400x400/1c1b1b/b8c3ff?text=MT'">
+            <div class="quick-add-overlay" style="position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:12px;background:linear-gradient(to top,rgba(10,10,10,0.8) 0%,transparent 50%);">
+              <button class="btn-prime" style="padding:8px 16px;background:#2e5bff;border:none;border-radius:10px;color:#fff;font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:4px;" onclick="event.stopPropagation();CartState.add(${p.id},null,1)">
+                <span class="material-symbols-outlined" style="font-size:13px;">add_shopping_cart</span> Add
+              </button>
+            </div>
           </div>
-          <div class="product-info">
-            <span class="product-brand">${p.brand}</span>
-            <h3 class="product-name"><a href="/produto.html?id=${p.id}">${p.name}</a></h3>
-            <div class="product-pricing">
-              <span class="product-price">${formatPrice(p.price)}</span>
-              ${p.original_price ? `<span class="product-old-price">${formatPrice(p.original_price)}</span>` : ''}
-              ${discount > 0 ? `<span class="discount-badge">-${discount}%</span>` : ''}
+          <div style="padding:16px;">
+            <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#c4c5d9;margin-bottom:4px;">${p.brand}</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:#e5e2e1;margin-bottom:10px;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">${p.name}</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#b8c3ff;">${formatPrice(p.price)}</span>
+              ${discount > 0 ? `<span style="background:rgba(46,91,255,0.15);color:#b8c3ff;font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;">-${discount}%</span>` : ''}
             </div>
           </div>
         </div>`;
@@ -197,16 +262,16 @@
 
     function renderVaultCard(p) {
       return `
-        <div class="vault-card">
-          <div class="vault-card-img">
-            <img src="${p.image_url}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/300x300/14141f/7B2FBE?text=MP'">
+        <div class="interactive-card" style="flex-shrink:0;width:260px;background:#1c1b1b;border:1px solid #434656;border-radius:20px;overflow:hidden;">
+          <div style="aspect-ratio:1/1;background:#201f1f;overflow:hidden;">
+            <img src="${p.image_url}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='https://placehold.co/300x300/1c1b1b/b8c3ff?text=MT'">
           </div>
-          <div class="vault-card-info">
-            <span class="vault-card-brand">${p.brand}</span>
-            <h4 class="vault-card-name">${p.name}</h4>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;">
-              <span style="font-family:'Bangers',cursive;font-size:22px;color:#FFD700;">${formatPrice(p.price)}</span>
-              <button onclick="CartState.add(${p.id},null,1)" style="padding:8px 16px;background:linear-gradient(135deg,#7B2FBE,#FF1493);border:none;border-radius:8px;color:#FFD700;font-family:'Bangers',cursive;font-size:16px;cursor:pointer;letter-spacing:1px;">QUICK ADD</button>
+          <div style="padding:16px;">
+            <div style="font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#c4c5d9;margin-bottom:4px;">${p.brand}</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;color:#e5e2e1;margin-bottom:12px;">${p.name}</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#b8c3ff;">${formatPrice(p.price)}</span>
+              <button class="btn-prime" onclick="CartState.add(${p.id},null,1)" style="padding:8px 14px;background:#2e5bff;border:none;border-radius:10px;color:#fff;font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;">Quick Add</button>
             </div>
           </div>
         </div>`;
@@ -216,46 +281,46 @@
       try {
         const data = await ProductsAPI.getFeatured();
         const products = Array.isArray(data) ? data : (data.products || []);
-        document.getElementById('featured-grid').innerHTML = products.slice(0, 8).map(renderProductCard).join('') || '<p style="color:#555;text-align:center;padding:40px;">Nenhum produto encontrado.</p>';
-      } catch (e) {
-        document.getElementById('featured-grid').innerHTML = '<p style="color:#555;text-align:center;padding:40px;">Erro ao carregar produtos.</p>';
+        document.getElementById('featured-grid').innerHTML = products.slice(0, 8).map(renderProductCard).join('') || '<p style="color:#c4c5d9;text-align:center;padding:40px;grid-column:1/-1;">Nenhum produto encontrado.</p>';
+      } catch(e) {
+        document.getElementById('featured-grid').innerHTML = '<p style="color:#c4c5d9;text-align:center;padding:40px;grid-column:1/-1;">Erro ao carregar produtos.</p>';
       }
     }
 
     let vaultProducts = [];
-    let vaultIndex = 0;
 
     async function loadVault() {
       try {
         const data = await ProductsAPI.getAll({ sort: 'featured', limit: 8 });
         vaultProducts = (data.products || []).filter(p => p.badge === 'HOT');
+        if (vaultProducts.length === 0) vaultProducts = (data.products || []).slice(0, 6);
         renderVaultSlider();
-      } catch (e) {}
+      } catch(e) {}
     }
 
     function renderVaultSlider() {
       const slider = document.getElementById('vault-slider');
-      if (!slider || vaultProducts.length === 0) return;
+      if (!slider) return;
       slider.innerHTML = vaultProducts.map(renderVaultCard).join('');
     }
 
     document.getElementById('vault-prev')?.addEventListener('click', () => {
-      const slider = document.getElementById('vault-slider');
-      slider.scrollBy({ left: -320, behavior: 'smooth' });
+      document.getElementById('vault-slider')?.scrollBy({ left: -280, behavior: 'smooth' });
     });
     document.getElementById('vault-next')?.addEventListener('click', () => {
-      const slider = document.getElementById('vault-slider');
-      slider.scrollBy({ left: 320, behavior: 'smooth' });
+      document.getElementById('vault-slider')?.scrollBy({ left: 280, behavior: 'smooth' });
     });
 
     function joinConsortium(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button');
-      btn.textContent = '✓ INSCRITO!';
-      btn.style.background = '#39FF14';
-      btn.style.color = '#0a0a0a';
+      const original = btn.innerHTML;
+      btn.innerHTML = '✓ Inscrito!';
+      btn.style.background = '#1c1b1b';
+      btn.style.border = '1px solid rgba(184,195,255,0.3)';
+      btn.style.color = '#b8c3ff';
       e.target.querySelector('input').value = '';
-      setTimeout(() => { btn.innerHTML = 'JOIN <i class="ph-bold ph-arrow-right"></i>'; btn.style.background = ''; btn.style.color = ''; }, 3000);
+      setTimeout(() => { btn.innerHTML = original; btn.style.background = '#2e5bff'; btn.style.border = ''; btn.style.color = '#fff'; }, 3000);
     }
 
     document.addEventListener('DOMContentLoaded', () => {

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOGIN — MP IMPORTS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Boogaloo&family=Inter:wght@300;400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body { background: #0a0a0a; min-height: 100vh; display: flex; flex-direction: column; }
+    .auth-page {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-bg-text {
+      position: absolute;
+      font-family: 'Bangers', cursive;
+      font-size: clamp(80px, 20vw, 200px);
+      color: rgba(123, 47, 190, 0.07);
+      letter-spacing: 8px;
+      user-select: none;
+      pointer-events: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 440px;
+      background: #14141f;
+      border: 1px solid #7B2FBE;
+      border-radius: 16px;
+      padding: 40px;
+      position: relative;
+      box-shadow: 0 0 40px rgba(123, 47, 190, 0.3), 0 20px 60px rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+    .auth-card::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      background: linear-gradient(135deg, #7B2FBE, #FF1493, #FFD700, #7B2FBE);
+      border-radius: 17px;
+      z-index: -1;
+      opacity: 0.6;
+    }
+    .auth-logo {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .auth-logo .logo-text {
+      font-family: 'Bangers', cursive;
+      font-size: 38px;
+      color: #FFD700;
+      text-shadow: 3px 3px 0 #4A0080, 1px 1px 0 #4A0080, -1px -1px 0 #4A0080;
+      letter-spacing: 3px;
+      display: block;
+    }
+    .auth-logo .logo-sub {
+      font-family: 'Boogaloo', cursive;
+      font-size: 12px;
+      color: #FF1493;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .auth-tabs {
+      display: flex;
+      background: #0a0a0a;
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 28px;
+      border: 1px solid #2a2a3a;
+    }
+    .auth-tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      font-family: 'Russo One', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: #666;
+      cursor: pointer;
+      border-radius: 7px;
+      transition: all 0.25s;
+      border: none;
+      background: none;
+    }
+    .auth-tab.active {
+      background: linear-gradient(135deg, #7B2FBE, #4A0080);
+      color: #FFD700;
+    }
+    .auth-form { display: none; }
+    .auth-form.active { display: block; }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      font-family: 'Russo One', sans-serif;
+      color: #aaa;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .input-wrapper {
+      position: relative;
+    }
+    .input-wrapper i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #7B2FBE;
+      font-size: 18px;
+    }
+    .form-input {
+      width: 100%;
+      background: #0a0a0a;
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      padding: 12px 14px 12px 42px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #FFD700;
+      box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.15);
+    }
+    .form-input.no-icon { padding-left: 14px; }
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+    }
+    .password-toggle:hover { color: #FFD700; }
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #aaa;
+      cursor: pointer;
+    }
+    .checkbox-label input[type="checkbox"] {
+      accent-color: #7B2FBE;
+      width: 15px;
+      height: 15px;
+    }
+    .forgot-link {
+      font-size: 13px;
+      color: #FF1493;
+      text-decoration: none;
+    }
+    .forgot-link:hover { text-decoration: underline; }
+    .btn-auth {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #7B2FBE, #FF1493);
+      border: none;
+      border-radius: 10px;
+      color: #FFD700;
+      font-family: 'Bangers', cursive;
+      font-size: 20px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-bottom: 16px;
+    }
+    .btn-auth:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+    }
+    .btn-auth:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 16px 0;
+      color: #444;
+      font-size: 12px;
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #2a2a3a;
+    }
+    .btn-social {
+      width: 100%;
+      padding: 12px;
+      background: #0a0a0a;
+      border: 1px solid #2a2a3a;
+      border-radius: 10px;
+      color: #666;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      cursor: not-allowed;
+      opacity: 0.5;
+      margin-bottom: 20px;
+    }
+    .auth-switch {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+    }
+    .auth-switch a {
+      color: #FFD700;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .auth-switch a:hover { color: #FF1493; }
+    .form-hint {
+      font-size: 11px;
+      color: #555;
+      margin-top: 4px;
+    }
+    .error-msg {
+      background: rgba(255, 20, 147, 0.1);
+      border: 1px solid #FF1493;
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #FF1493;
+      font-size: 13px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .success-msg {
+      background: rgba(57, 255, 20, 0.1);
+      border: 1px solid #39FF14;
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #39FF14;
+      font-size: 13px;
+      margin-bottom: 16px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="announcement-placeholder"></div>
+  <div id="header-placeholder"></div>
+
+  <main class="auth-page">
+    <div class="auth-bg-text">MP IMPORTS</div>
+    <div class="auth-card">
+      <div class="auth-logo">
+        <span class="logo-text">MP IMPORTS</span>
+        <span class="logo-sub">Street Style &amp; Imports</span>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">ENTRAR</button>
+        <button class="auth-tab" data-tab="register">CRIAR CONTA</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div class="auth-form active" id="tab-login">
+        <div class="error-msg" id="login-error"></div>
+        <div class="success-msg" id="login-success">
+          <i class="ph-bold ph-check-circle"></i>
+          <span>Login realizado! Redirecionando...</span>
+        </div>
+        <form id="login-form" autocomplete="on">
+          <div class="form-group">
+            <label for="login-email">E-mail</label>
+            <div class="input-wrapper">
+              <i class="ph-bold ph-envelope"></i>
+              <input type="email" id="login-email" name="email" class="form-input" placeholder="seu@email.com" required autocomplete="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Senha</label>
+            <div class="input-wrapper">
+              <i class="ph-bold ph-lock"></i>
+              <input type="password" id="login-password" name="password" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+              <button type="button" class="password-toggle" onclick="togglePassword('login-password', this)">
+                <i class="ph-bold ph-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="checkbox-label">
+              <input type="checkbox" name="remember"> Lembrar de mim
+            </label>
+            <a href="#" class="forgot-link">Esqueceu a senha?</a>
+          </div>
+          <button type="submit" class="btn-auth">ENTRAR</button>
+        </form>
+        <div class="auth-divider">ou</div>
+        <button class="btn-social" disabled>🔗 Continuar com Google (em breve)</button>
+        <div class="auth-switch">Não tem conta? <a onclick="switchTab('register')">Criar agora</a></div>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div class="auth-form" id="tab-register">
+        <div class="error-msg" id="register-error"></div>
+        <div class="success-msg" id="register-success">
+          <i class="ph-bold ph-check-circle"></i>
+          <span>Conta criada! Bem-vindo(a) ao MP IMPORTS!</span>
+        </div>
+        <form id="register-form" autocomplete="on">
+          <div class="form-group">
+            <label for="reg-name">Nome Completo</label>
+            <div class="input-wrapper">
+              <i class="ph-bold ph-user"></i>
+              <input type="text" id="reg-name" name="name" class="form-input" placeholder="Seu nome completo" required autocomplete="name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reg-email">E-mail</label>
+            <div class="input-wrapper">
+              <i class="ph-bold ph-envelope"></i>
+              <input type="email" id="reg-email" name="email" class="form-input" placeholder="seu@email.com" required autocomplete="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Senha</label>
+            <div class="input-wrapper">
+              <i class="ph-bold ph-lock"></i>
+              <input type="password" id="reg-password" name="password" class="form-input" placeholder="Mínimo 8 caracteres" required autocomplete="new-password" minlength="8">
+              <button type="button" class="password-toggle" onclick="togglePassword('reg-password', this)">
+                <i class="ph-bold ph-eye"></i>
+              </button>
+            </div>
+            <p class="form-hint">Use pelo menos 8 caracteres com letras e números.</p>
+          </div>
+          <div class="form-group">
+            <label for="reg-confirm">Confirmar Senha</label>
+            <div class="input-wrapper">
+              <i class="ph-bold ph-lock-key"></i>
+              <input type="password" id="reg-confirm" name="confirm" class="form-input" placeholder="Repita a senha" required autocomplete="new-password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label" style="color:#aaa; font-size:13px;">
+              <input type="checkbox" name="terms" required>
+              Concordo com os <a href="#" style="color:#FFD700;">Termos de Uso</a> e <a href="#" style="color:#FFD700;">Política de Privacidade</a>
+            </label>
+          </div>
+          <button type="submit" class="btn-auth">CRIAR CONTA</button>
+        </form>
+        <div class="auth-switch">Já tem conta? <a onclick="switchTab('login')">Entrar agora</a></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/cart.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    function switchTab(tab) {
+      document.querySelectorAll('.auth-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+      document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+    }
+    document.querySelectorAll('.auth-tab').forEach(btn => {
+      btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+    });
+
+    function togglePassword(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'ph-bold ph-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'ph-bold ph-eye';
+      }
+    }
+
+    function showError(id, msg) {
+      const el = document.getElementById(id);
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+    function hideError(id) { document.getElementById(id).style.display = 'none'; }
+    function showSuccess(id) { document.getElementById(id).style.display = 'flex'; }
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideError('login-error');
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'ENTRANDO...';
+      try {
+        const data = await AuthAPI.login({
+          email: e.target.email.value,
+          password: e.target.password.value
+        });
+        localStorage.setItem('mpimports_token', data.token);
+        localStorage.setItem('mpimports_user', JSON.stringify(data.user));
+        showSuccess('login-success');
+        const redirect = new URLSearchParams(window.location.search).get('redirect') || '/';
+        setTimeout(() => window.location.href = redirect, 1200);
+      } catch (err) {
+        showError('login-error', err.message || 'E-mail ou senha inválidos.');
+        btn.disabled = false;
+        btn.textContent = 'ENTRAR';
+      }
+    });
+
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideError('register-error');
+      const password = e.target.password.value;
+      const confirm = e.target.confirm.value;
+      if (password !== confirm) {
+        showError('register-error', 'As senhas não coincidem.');
+        return;
+      }
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'CRIANDO...';
+      try {
+        const data = await AuthAPI.register({
+          name: e.target.name.value,
+          email: e.target.email.value,
+          password
+        });
+        localStorage.setItem('mpimports_token', data.token);
+        localStorage.setItem('mpimports_user', JSON.stringify(data.user));
+        showSuccess('register-success');
+        setTimeout(() => window.location.href = '/', 1500);
+      } catch (err) {
+        showError('register-error', err.message || 'Erro ao criar conta. Tente novamente.');
+        btn.disabled = false;
+        btn.textContent = 'CRIAR CONTA';
+      }
+    });
+
+    // Redirect if already logged in
+    if (localStorage.getItem('mpimports_token')) {
+      const redirect = new URLSearchParams(window.location.search).get('redirect') || '/';
+      window.location.href = redirect;
+    }
+  </script>
+</body>
+</html>

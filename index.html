@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolsas — MP IMPORTS</title>
+  <meta name="description" content="Compre online Bolsas em MP IMPORTS. Temos bolsa tiracolo Gucci Dionysus, Tory Burch e mais." />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Phosphor Icons (lightweight icon set) -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+</head>
+<body>
+
+<!-- ===================== ANNOUNCEMENT BAR ===================== -->
+<div class="announcement-bar">
+  <span>👑</span> FRETE GRÁTIS acima de R$500 <span>✦</span> PARCELE em até 12x sem juros <span>👑</span>
+</div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-top">
+
+      <!-- Left utils (mobile hamburger + search) -->
+      <div class="header-utils header-utils-left">
+        <button class="hamburger-btn util-btn" id="hamburger-btn" aria-label="Menu">
+          <i class="ph ph-list"></i>
+        </button>
+        <button class="util-btn" id="search-toggle" aria-label="Pesquisar">
+          <i class="ph ph-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <!-- Logo -->
+      <div class="logo-area">
+        <a href="index.html" class="logo-link">
+          MP IMPORTS
+          <span class="logo-sub">STREET STYLE &amp; IMPORTS</span>
+        </a>
+      </div>
+
+      <!-- Right utils -->
+      <div class="header-utils">
+        <a href="login.html" class="util-btn" aria-label="Minha conta">
+          <i class="ph ph-user"></i>
+        </a>
+        <button class="util-btn" id="cart-toggle" aria-label="Carrinho">
+          <i class="ph ph-shopping-bag"></i>
+          <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Desktop nav -->
+    <nav class="header-nav">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="index.html">Início</a></li>
+        <li class="has-dropdown">
+          <a class="nav-link" href="tenis.html">
+            Tênis <i class="ph ph-caret-down" style="font-size:11px;"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="tenis-air-force.html">Air Force</a>
+            <a href="tenis-dunk.html">Dunk</a>
+            <a href="tenis-jordan-1.html">Air Jordan 1</a>
+            <a href="tenis-jordan-3.html">Air Jordan 3</a>
+            <a href="tenis-jordan-4.html">Air Jordan 4</a>
+          </div>
+        </li>
+        <li><a class="nav-link" href="jaquetas.html">Jaquetas</a></li>
+        <li><a class="nav-link" href="roupas.html">Roupas</a></li>
+        <li><a class="nav-link active" href="index.html">Bolsas</a></li>
+        <li><a class="nav-link" href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Search bar (hidden by default) -->
+  <div class="search-bar" id="search-bar">
+    <div class="container">
+      <form class="search-form" onsubmit="return false;">
+        <input class="search-input" type="text" placeholder="Pesquisar produtos..." />
+        <button class="search-btn" type="submit">
+          <i class="ph ph-magnifying-glass"></i> Buscar
+        </button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== MOBILE NAV DRAWER ===================== -->
+<div class="overlay" id="mobile-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-logo">
+    MP IMPORTS
+    <button class="close-btn" id="mobile-nav-close"><i class="ph ph-x"></i></button>
+  </div>
+  <a class="mobile-nav-link" href="index.html">
+    <span>Início</span><i class="ph ph-house"></i>
+  </a>
+  <a class="mobile-nav-link" href="tenis.html">
+    <span>Tênis</span><i class="ph ph-sneaker"></i>
+  </a>
+  <a class="mobile-nav-link" style="padding-left:36px;font-size:13px;color:rgba(255,215,0,0.5)" href="tenis-air-force.html">Air Force</a>
+  <a class="mobile-nav-link" style="padding-left:36px;font-size:13px;color:rgba(255,215,0,0.5)" href="tenis-dunk.html">Dunk</a>
+  <a class="mobile-nav-link" style="padding-left:36px;font-size:13px;color:rgba(255,215,0,0.5)" href="tenis-jordan-1.html">Air Jordan 1</a>
+  <a class="mobile-nav-link" href="jaquetas.html">
+    <span>Jaquetas</span><i class="ph ph-coat-hanger"></i>
+  </a>
+  <a class="mobile-nav-link" href="roupas.html">
+    <span>Roupas</span><i class="ph ph-t-shirt"></i>
+  </a>
+  <a class="mobile-nav-link active" href="index.html">
+    <span>Bolsas</span><i class="ph ph-handbag"></i>
+  </a>
+  <a class="mobile-nav-link" href="contato.html">
+    <span>Contato</span><i class="ph ph-chat-circle"></i>
+  </a>
+</nav>
+
+<!-- ===================== CART DRAWER ===================== -->
+<div class="overlay" id="cart-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-drawer-header">
+    <div class="cart-drawer-title">CARRINHO</div>
+    <button class="close-btn" id="cart-close"><i class="ph ph-x"></i></button>
+  </div>
+  <div class="cart-empty">
+    <div class="cart-empty-icon"><i class="ph ph-shopping-bag-open"></i></div>
+    <p class="cart-empty-text">Seu carrinho está vazio</p>
+    <a href="index.html" class="btn-outline" style="margin-top:8px;">Ver Produtos</a>
+  </div>
+</aside>
+
+<!-- ===================== MAIN CONTENT ===================== -->
+<main>
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-section">
+      <div class="breadcrumb">
+        <a href="index.html"><i class="ph ph-house"></i></a>
+        <span class="sep">›</span>
+        <span class="current">Bolsas</span>
+      </div>
+    </nav>
+
+    <!-- Category Hero -->
+    <section class="category-hero">
+      <h1 class="category-title">
+        <span class="crown-deco">👑</span> BOLSAS <span class="crown-deco">👑</span>
+      </h1>
+      <p class="category-subtitle">Estilo que fala por você</p>
+      <p class="category-count">11 produtos encontrados</p>
+    </section>
+
+    <!-- Drip bar decoration -->
+    <div class="drip-bar" style="margin-bottom:30px;"></div>
+
+    <!-- Shop Layout: Sidebar + Products -->
+    <div class="shop-layout">
+
+      <!-- ---- SIDEBAR ---- -->
+      <aside class="sidebar">
+
+        <!-- Price filter -->
+        <div class="sidebar-section">
+          <div class="sidebar-title">Preço</div>
+          <div class="price-range-inputs">
+            <input class="price-input" type="text" placeholder="R$ Mín" />
+            <span class="price-sep">—</span>
+            <input class="price-input" type="text" placeholder="R$ Máx" />
+          </div>
+          <button class="apply-filter-btn">Aplicar</button>
+        </div>
+
+        <!-- Brand filter -->
+        <div class="sidebar-section">
+          <div class="sidebar-title">Marcas</div>
+          <div class="filter-list">
+            <div class="filter-item active" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"><i class="ph ph-check" style="font-size:10px;"></i></div>
+              <span>Gucci</span>
+            </div>
+            <div class="filter-item" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"></div>
+              <span>Tory Burch</span>
+            </div>
+            <div class="filter-item" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"></div>
+              <span>Louis Vuitton</span>
+            </div>
+            <div class="filter-item" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"></div>
+              <span>Coach</span>
+            </div>
+            <div class="filter-item" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"></div>
+              <span>Prada</span>
+            </div>
+            <div class="filter-item" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"></div>
+              <span>Dior</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Type filter -->
+        <div class="sidebar-section">
+          <div class="sidebar-title">Tipo</div>
+          <div class="filter-list">
+            <div class="filter-item" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"></div>
+              <span>Tiracolo</span>
+            </div>
+            <div class="filter-item" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"></div>
+              <span>Clutch</span>
+            </div>
+            <div class="filter-item" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"></div>
+              <span>Mochila</span>
+            </div>
+            <div class="filter-item" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"></div>
+              <span>Tote</span>
+            </div>
+            <div class="filter-item" onclick="this.classList.toggle('active')">
+              <div class="filter-checkbox"></div>
+              <span>Mini Bag</span>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ---- PRODUCTS COLUMN ---- -->
+      <div>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <button class="filter-btn">
+              <i class="ph ph-funnel"></i> Filtros
+            </button>
+            <span style="font-size:12px;color:var(--gray);">11 produtos</span>
+          </div>
+          <div class="toolbar-right">
+            <select class="sort-select">
+              <option>Mais relevantes</option>
+              <option>Menor preço</option>
+              <option>Maior preço</option>
+              <option>Mais recentes</option>
+            </select>
+            <button class="view-toggle-btn active" title="Grade"><i class="ph ph-squares-four"></i></button>
+            <button class="view-toggle-btn" title="Lista"><i class="ph ph-list"></i></button>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+
+          <!-- Product 1 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop&auto=format"
+                alt="Bolsa Gucci Dionysus Denim"
+                class="product-img"
+                loading="lazy"
+              />
+              <span class="product-badge">HOT</span>
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Gucci</div>
+              <div class="product-name">Bolsa Tiracolo Dionysus Super Mini Denim GG Preto</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 2.890</span>
+                <span class="product-price-old">R$ 3.400</span>
+                <span class="product-discount">-15%</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400&h=400&fit=crop&auto=format"
+                alt="Bolsa Preta T Monogram"
+                class="product-img"
+                loading="lazy"
+              />
+              <span class="product-badge badge-new">NOVO</span>
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Tory Burch</div>
+              <div class="product-name">Bolsa Preta T Monogram Crescent Bag</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 1.650</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop&auto=format"
+                alt="Bolsa Louis Vuitton Pochette"
+                class="product-img"
+                loading="lazy"
+              />
+              <span class="product-badge badge-sale">SALE</span>
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Louis Vuitton</div>
+              <div class="product-name">Pochette Métis Monogram Canvas</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 4.200</span>
+                <span class="product-price-old">R$ 5.100</span>
+                <span class="product-discount">-18%</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&auto=format"
+                alt="Mochila Prada Nylon"
+                class="product-img"
+                loading="lazy"
+              />
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Prada</div>
+              <div class="product-name">Mochila Re-Nylon Triângulo Preto</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 3.750</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 5 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=400&h=400&fit=crop&auto=format"
+                alt="Bolsa Coach Tabby"
+                class="product-img"
+                loading="lazy"
+              />
+              <span class="product-badge badge-new">NOVO</span>
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Coach</div>
+              <div class="product-name">Bolsa Tabby 26 Couro Marrom Saddle</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 1.890</span>
+                <span class="product-price-old">R$ 2.200</span>
+                <span class="product-discount">-14%</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 6 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400&h=400&fit=crop&auto=format"
+                alt="Clutch Dior"
+                class="product-img"
+                loading="lazy"
+              />
+              <span class="product-badge">HOT</span>
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Dior</div>
+              <div class="product-name">Clutch Lady Dior Mini Rosa Cannage</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 6.800</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 7 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1612423284934-2850a4ea6b0f?w=400&h=400&fit=crop&auto=format"
+                alt="Bolsa Gucci GG Marmont"
+                class="product-img"
+                loading="lazy"
+              />
+              <span class="product-badge badge-sale">SALE</span>
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Gucci</div>
+              <div class="product-name">Bolsa GG Marmont Matelassê Bege Pequena</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 3.100</span>
+                <span class="product-price-old">R$ 3.800</span>
+                <span class="product-discount">-18%</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 8 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1575032617751-6ddec2089882?w=400&h=400&fit=crop&auto=format"
+                alt="Tote Louis Vuitton"
+                class="product-img"
+                loading="lazy"
+              />
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Louis Vuitton</div>
+              <div class="product-name">Tote Neverfull MM Damier Ebène</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 5.490</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 9 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1594938298603-c8148c4bca27?w=400&h=400&fit=crop&auto=format"
+                alt="Bolsa Coach Mini Crossbody"
+                class="product-img"
+                loading="lazy"
+              />
+              <span class="product-badge badge-new">NOVO</span>
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Coach</div>
+              <div class="product-name">Mini Crossbody Pillow Puffer Azul</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 980</span>
+                <span class="product-price-old">R$ 1.200</span>
+                <span class="product-discount">-18%</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 10 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1614179818511-39f4bc7c3c25?w=400&h=400&fit=crop&auto=format"
+                alt="Bolsa Prada Cleo"
+                class="product-img"
+                loading="lazy"
+              />
+              <span class="product-badge">HOT</span>
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Prada</div>
+              <div class="product-name">Bolsa Cleo Brushed Leather Shoulder Prata</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 4.750</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 11 -->
+          <article class="product-card">
+            <div class="product-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1588099768523-f4e6a5679d88?w=400&h=400&fit=crop&auto=format"
+                alt="Bolsa Tory Burch Eleanor"
+                class="product-img"
+                loading="lazy"
+              />
+              <button class="quick-add-btn" onclick="addToCart(this)">
+                <i class="ph ph-shopping-bag"></i> Adicionar
+              </button>
+            </div>
+            <div class="product-info">
+              <div class="product-brand">Tory Burch</div>
+              <div class="product-name">Eleanor Small Convertible Shoulder Bag Marfim</div>
+              <div class="product-price-row">
+                <span class="product-price">R$ 1.350</span>
+                <span class="product-price-old">R$ 1.650</span>
+                <span class="product-discount">-18%</span>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /product-grid -->
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <a class="page-btn active" href="#">1</a>
+          <a class="page-btn" href="#">2</a>
+          <a class="page-btn" href="#">›</a>
+        </div>
+
+      </div><!-- /products column -->
+
+    </div><!-- /shop-layout -->
+  </div><!-- /container -->
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand col -->
+      <div>
+        <div class="footer-logo">MP IMPORTS</div>
+        <p class="footer-desc">
+          Trazemos o melhor do streetwear e luxo importado direto para você.
+          Qualidade garantida, estilo inigualável.
+        </p>
+        <div class="social-links">
+          <a class="social-link ig" href="#" aria-label="Instagram">
+            <i class="ph ph-instagram-logo"></i>
+          </a>
+          <a class="social-link wa" href="#" aria-label="WhatsApp">
+            <i class="ph ph-whatsapp-logo"></i>
+          </a>
+          <a class="social-link fb" href="#" aria-label="Facebook">
+            <i class="ph ph-facebook-logo"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation col -->
+      <div>
+        <div class="footer-col-title">Loja</div>
+        <div class="footer-links">
+          <a class="footer-link" href="#">Tênis</a>
+          <a class="footer-link" href="#">Jaquetas</a>
+          <a class="footer-link" href="#">Roupas</a>
+          <a class="footer-link" href="#">Bolsas</a>
+        </div>
+      </div>
+
+      <!-- Help col -->
+      <div>
+        <div class="footer-col-title">Ajuda</div>
+        <div class="footer-links">
+          <a class="footer-link" href="#">Rastrear pedido</a>
+          <a class="footer-link" href="#">Trocas e devoluções</a>
+          <a class="footer-link" href="#">Política de privacidade</a>
+          <a class="footer-link" href="#">Contato</a>
+        </div>
+      </div>
+
+      <!-- Newsletter col -->
+      <div>
+        <div class="footer-col-title">Newsletter</div>
+        <p style="font-size:12px;color:var(--gray);margin-bottom:12px;line-height:1.6;">
+          Receba ofertas exclusivas e novidades antes de todo mundo.
+        </p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input class="newsletter-input" type="email" placeholder="seu@email.com" />
+          <button class="newsletter-btn" type="submit">
+            <i class="ph ph-paper-plane-tilt"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Footer bottom -->
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        &copy; 2025 <span>MP IMPORTS</span>. Todos os direitos reservados.
+      </div>
+      <div class="payment-icons">
+        <span class="payment-icon">PIX</span>
+        <span class="payment-icon">VISA</span>
+        <span class="payment-icon">MASTER</span>
+        <span class="payment-icon">AMEX</span>
+        <span class="payment-icon">BOLETO</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== COOKIE BANNER ===================== -->
+<div class="cookie-banner" id="cookie-banner">
+  <p class="cookie-text">
+    Ao navegar neste site <strong>você aceita o uso de cookies</strong> para uma melhor experiência de compra.
+  </p>
+  <button class="cookie-close" id="cookie-close">Entendi</button>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+  /* ---- Search toggle ---- */
+  const searchToggle = document.getElementById('search-toggle');
+  const searchBar    = document.getElementById('search-bar');
+  searchToggle.addEventListener('click', () => searchBar.classList.toggle('open'));
+
+  /* ---- Cart drawer ---- */
+  const cartToggle  = document.getElementById('cart-toggle');
+  const cartDrawer  = document.getElementById('cart-drawer');
+  const cartClose   = document.getElementById('cart-close');
+  const cartOverlay = document.getElementById('cart-overlay');
+
+  function openCart()  { cartDrawer.classList.add('open');  cartOverlay.classList.add('open');  document.body.style.overflow='hidden'; }
+  function closeCart() { cartDrawer.classList.remove('open'); cartOverlay.classList.remove('open'); document.body.style.overflow=''; }
+
+  cartToggle.addEventListener('click', openCart);
+  cartClose.addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+
+  /* ---- Mobile nav ---- */
+  const hamburgerBtn   = document.getElementById('hamburger-btn');
+  const mobileNav      = document.getElementById('mobile-nav');
+  const mobileNavClose = document.getElementById('mobile-nav-close');
+  const mobileOverlay  = document.getElementById('mobile-overlay');
+
+  function openMobileNav()  { mobileNav.classList.add('open');  mobileOverlay.classList.add('open');  document.body.style.overflow='hidden'; }
+  function closeMobileNav() { mobileNav.classList.remove('open'); mobileOverlay.classList.remove('open'); document.body.style.overflow=''; }
+
+  hamburgerBtn.addEventListener('click', openMobileNav);
+  mobileNavClose.addEventListener('click', closeMobileNav);
+  mobileOverlay.addEventListener('click', closeMobileNav);
+
+  /* ---- Cookie banner ---- */
+  const cookieBanner = document.getElementById('cookie-banner');
+  const cookieClose  = document.getElementById('cookie-close');
+
+  if (!localStorage.getItem('cookies-ok')) {
+    cookieBanner.style.display = 'flex';
+  }
+
+  cookieClose.addEventListener('click', () => {
+    localStorage.setItem('cookies-ok', '1');
+    cookieBanner.style.display = 'none';
+  });
+
+  /* ---- Add to cart (demo) ---- */
+  let cartCount = 0;
+  const cartCountEl = document.getElementById('cart-count');
+
+  function addToCart(btn) {
+    cartCount++;
+    cartCountEl.textContent = cartCount;
+    cartCountEl.style.transform = 'scale(1.4)';
+    btn.textContent = '✓ Adicionado!';
+    btn.style.background = 'linear-gradient(135deg, #39FF14, #00aa00)';
+    btn.style.color = '#000';
+    setTimeout(() => {
+      btn.innerHTML = '<i class="ph ph-shopping-bag"></i> Adicionar';
+      btn.style.background = '';
+      btn.style.color = '';
+      cartCountEl.style.transform = '';
+    }, 1200);
+  }
+
+  /* ---- View toggle ---- */
+  document.querySelectorAll('.view-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.view-toggle-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produto — MP IMPORTS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Boogaloo&family=Inter:wght@300;400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .product-detail-page { padding: 40px 0 80px; }
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media(max-width:768px){ .product-detail-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+    /* Gallery */
+    .product-gallery {}
+    .main-image-wrap {
+      aspect-ratio: 1/1;
+      background: #14141f;
+      border: 1px solid #2a2a3a;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .main-image-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .main-image-wrap:hover img { transform: scale(1.05); }
+    .thumbnails {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .thumb {
+      width: 72px; height: 72px;
+      border: 2px solid #2a2a3a;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .thumb.active, .thumb:hover { border-color: #FFD700; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Product Info */
+    .product-info-section {}
+    .product-brand-badge {
+      font-family: 'Boogaloo', cursive;
+      font-size: 14px;
+      color: #FF1493;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .product-detail-name {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(28px, 5vw, 42px);
+      color: #fff;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .stars { color: #FFD700; font-size: 16px; }
+    .rating-count { font-size: 13px; color: #555; }
+    .product-detail-price {
+      font-family: 'Bangers', cursive;
+      font-size: 46px;
+      color: #FFD700;
+      text-shadow: 2px 2px 0 rgba(123,47,190,0.5);
+      letter-spacing: 2px;
+    }
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .old-price-detail {
+      font-size: 20px;
+      color: #444;
+      text-decoration: line-through;
+      font-family: 'Inter', sans-serif;
+    }
+    .discount-chip {
+      background: rgba(57,255,20,0.12);
+      border: 1px solid #39FF14;
+      border-radius: 6px;
+      padding: 4px 10px;
+      color: #39FF14;
+      font-family: 'Russo One', sans-serif;
+      font-size: 13px;
+    }
+    .free-ship-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(57,255,20,0.08);
+      border: 1px solid rgba(57,255,20,0.3);
+      border-radius: 6px;
+      padding: 6px 12px;
+      color: #39FF14;
+      font-size: 13px;
+      font-family: 'Russo One', sans-serif;
+      margin-bottom: 20px;
+    }
+    .product-divider { border: none; border-top: 1px solid #1a1a2e; margin: 20px 0; }
+
+    /* Size Selector */
+    .size-label {
+      font-family: 'Russo One', sans-serif;
+      font-size: 12px;
+      color: #666;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .size-guide { color: #FF1493; cursor: pointer; text-decoration: underline; font-size: 11px; }
+    .size-grid-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .size-btn {
+      min-width: 48px;
+      padding: 10px 8px;
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      background: #0a0a0a;
+      color: #aaa;
+      font-family: 'Russo One', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .size-btn:hover { border-color: #7B2FBE; color: #fff; }
+    .size-btn.selected { border-color: #FFD700; background: rgba(255,215,0,0.1); color: #FFD700; }
+
+    /* Quantity */
+    .qty-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .qty-label { font-family: 'Russo One', sans-serif; font-size: 12px; color: #666; letter-spacing: 1px; }
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .qty-ctrl-btn {
+      width: 36px; height: 36px;
+      background: #0a0a0a;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .qty-ctrl-btn:hover { background: #7B2FBE; color: #fff; }
+    .qty-display {
+      min-width: 40px;
+      text-align: center;
+      font-family: 'Russo One', sans-serif;
+      font-size: 16px;
+      color: #fff;
+      background: #0a0a0a;
+      border-left: 1px solid #2a2a3a;
+      border-right: 1px solid #2a2a3a;
+      padding: 0 8px;
+      line-height: 36px;
+    }
+
+    /* Action Buttons */
+    .btn-add-cart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #7B2FBE, #FF1493);
+      border: none;
+      border-radius: 12px;
+      color: #FFD700;
+      font-family: 'Bangers', cursive;
+      font-size: 24px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-bottom: 12px;
+    }
+    .btn-add-cart:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,20,147,0.4); }
+    .btn-add-cart:active { transform: translateY(0); }
+    .btn-buy-now {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      border: 2px solid #7B2FBE;
+      border-radius: 12px;
+      color: #fff;
+      font-family: 'Bangers', cursive;
+      font-size: 20px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-decoration: none;
+    }
+    .btn-buy-now:hover { background: #7B2FBE; color: #FFD700; }
+
+    /* Features row */
+    .product-features {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .feature-chip {
+      flex: 1;
+      min-width: 90px;
+      background: #0a0a0a;
+      border: 1px solid #1a1a2e;
+      border-radius: 10px;
+      padding: 12px 8px;
+      text-align: center;
+      font-size: 11px;
+      color: #666;
+    }
+    .feature-chip i { display: block; font-size: 22px; color: #7B2FBE; margin-bottom: 6px; }
+
+    /* Tabs */
+    .product-tabs { margin-top: 48px; }
+    .tab-btns {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid #1a1a2e;
+      margin-bottom: 0;
+    }
+    .tab-btn {
+      padding: 12px 24px;
+      background: none;
+      border: none;
+      font-family: 'Russo One', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #444;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { color: #FFD700; border-bottom-color: #FFD700; }
+    .tab-panel { display: none; padding: 24px 0; color: #aaa; font-size: 14px; line-height: 1.8; }
+    .tab-panel.active { display: block; }
+    .review-card {
+      background: #14141f;
+      border: 1px solid #1a1a2e;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .review-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .reviewer-name { font-family: 'Boogaloo', cursive; font-size: 16px; color: #fff; }
+    .review-stars { color: #FFD700; }
+
+    /* Related */
+    .related-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid #1a1a2e; }
+    .related-title { font-family: 'Bangers', cursive; font-size: 32px; color: #FFD700; text-shadow: 2px 2px 0 #4A0080; margin-bottom: 24px; }
+  </style>
+</head>
+<body>
+  <div id="announcement-placeholder"></div>
+  <div id="header-placeholder"></div>
+
+  <main class="product-detail-page">
+    <div class="container">
+      <nav class="breadcrumb" id="breadcrumb">
+        <a href="/">Home</a>
+        <i class="ph-bold ph-caret-right" style="font-size:12px;"></i>
+        <a href="#" id="bc-category">Categoria</a>
+        <i class="ph-bold ph-caret-right" style="font-size:12px;"></i>
+        <span id="bc-product">Produto</span>
+      </nav>
+
+      <div class="product-detail-grid" id="product-detail">
+        <!-- Gallery -->
+        <div class="product-gallery">
+          <div class="main-image-wrap">
+            <img id="main-img" src="https://via.placeholder.com/600x600/14141f/7B2FBE?text=MP" alt="Produto">
+          </div>
+          <div class="thumbnails" id="thumbnails"></div>
+        </div>
+
+        <!-- Info -->
+        <div class="product-info-section">
+          <div class="product-brand-badge" id="product-brand">Carregando...</div>
+          <h1 class="product-detail-name" id="product-name">Carregando produto...</h1>
+          <div class="product-rating">
+            <div class="stars">★★★★★</div>
+            <span class="rating-count">(48 avaliações)</span>
+          </div>
+          <div class="price-row">
+            <span class="product-detail-price" id="product-price">R$ 0,00</span>
+            <span class="old-price-detail" id="product-old-price" style="display:none;"></span>
+            <span class="discount-chip" id="product-discount" style="display:none;"></span>
+          </div>
+          <div class="free-ship-badge"><i class="ph-bold ph-truck"></i> FRETE GRÁTIS</div>
+
+          <hr class="product-divider">
+
+          <div id="size-section">
+            <div class="size-label">
+              <span>TAMANHO</span>
+              <span class="size-guide">Guia de Tamanhos</span>
+            </div>
+            <div class="size-grid-selector" id="size-selector"></div>
+          </div>
+
+          <div class="qty-row">
+            <span class="qty-label">QUANTIDADE</span>
+            <div class="qty-control">
+              <button class="qty-ctrl-btn" onclick="changeQty(-1)">−</button>
+              <span class="qty-display" id="qty-display">1</span>
+              <button class="qty-ctrl-btn" onclick="changeQty(1)">+</button>
+            </div>
+          </div>
+
+          <button class="btn-add-cart" id="add-cart-btn" onclick="handleAddToCart()">
+            <i class="ph-bold ph-shopping-cart"></i> ADICIONAR AO CARRINHO
+          </button>
+          <a href="/checkout.html" class="btn-buy-now">
+            <i class="ph-bold ph-lightning"></i> COMPRAR AGORA
+          </a>
+
+          <div class="product-features">
+            <div class="feature-chip"><i class="ph-bold ph-globe"></i>Produto<br>Importado</div>
+            <div class="feature-chip"><i class="ph-bold ph-shield-check"></i>Garantia<br>30 dias</div>
+            <div class="feature-chip"><i class="ph-bold ph-truck"></i>Entrega<br>Express</div>
+            <div class="feature-chip"><i class="ph-bold ph-credit-card"></i>12x sem<br>juros</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="product-tabs">
+        <div class="tab-btns">
+          <button class="tab-btn active" onclick="showTab('desc')">DESCRIÇÃO</button>
+          <button class="tab-btn" onclick="showTab('details')">DETALHES</button>
+          <button class="tab-btn" onclick="showTab('reviews')">AVALIAÇÕES</button>
+        </div>
+        <div class="tab-panel active" id="tab-desc">
+          <p id="product-description">Carregando descrição...</p>
+        </div>
+        <div class="tab-panel" id="tab-details">
+          <table style="width:100%;border-collapse:collapse;">
+            <tr style="border-bottom:1px solid #1a1a2e;"><td style="padding:10px 0;color:#666;width:160px;">Marca</td><td id="detail-brand" style="color:#fff;"></td></tr>
+            <tr style="border-bottom:1px solid #1a1a2e;"><td style="padding:10px 0;color:#666;">Categoria</td><td id="detail-category" style="color:#fff;"></td></tr>
+            <tr style="border-bottom:1px solid #1a1a2e;"><td style="padding:10px 0;color:#666;">Tamanhos</td><td id="detail-sizes" style="color:#fff;"></td></tr>
+            <tr><td style="padding:10px 0;color:#666;">Disponibilidade</td><td style="color:#39FF14;">Em Estoque</td></tr>
+          </table>
+        </div>
+        <div class="tab-panel" id="tab-reviews">
+          <div class="review-card">
+            <div class="review-header"><span class="reviewer-name">Lucas M.</span><span class="review-stars">★★★★★</span></div>
+            <p>Produto incrível! Exatamente como descrito, chegou antes do prazo. Qualidade impecável.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header"><span class="reviewer-name">Fernanda C.</span><span class="review-stars">★★★★★</span></div>
+            <p>Amei! Comprei para presente e ficou perfeito. Embalagem caprichada, produto de altíssima qualidade.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header"><span class="reviewer-name">Rafael S.</span><span class="review-stars">★★★★☆</span></div>
+            <p>Muito bom, chegou bem embalado. Tamanho conferiu com a tabela. Recomendo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related -->
+      <div class="related-section">
+        <h2 class="related-title">VOCÊ TAMBÉM VAI AMAR</h2>
+        <div class="products-grid" id="related-grid"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/cart.js"></script>
+  <script src="/js/main.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    let product = null;
+    let selectedSize = null;
+    let quantity = 1;
+
+    function formatPrice(v) {
+      return 'R$ ' + Number(v).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+    const catNames = { tenis: 'Tênis', bolsas: 'Bolsas', jaquetas: 'Jaquetas', roupas: 'Roupas' };
+
+    async function loadProduct() {
+      if (!productId) { window.location.href = '/'; return; }
+      try {
+        product = await ProductsAPI.getById(productId);
+        renderProduct();
+        loadRelated();
+      } catch(e) {
+        document.getElementById('product-name').textContent = 'Produto não encontrado';
+      }
+    }
+
+    function renderProduct() {
+      document.title = product.name + ' — MP IMPORTS';
+      document.getElementById('bc-category').textContent = catNames[product.category] || product.category;
+      document.getElementById('bc-category').href = '/categoria.html?cat=' + product.category;
+      document.getElementById('bc-product').textContent = product.name;
+      document.getElementById('product-brand').textContent = product.brand;
+      document.getElementById('product-name').textContent = product.name;
+      document.getElementById('product-price').textContent = formatPrice(product.price);
+      document.getElementById('product-description').textContent = product.description || 'Produto importado de alta qualidade. Consulte o guia de tamanhos.';
+      document.getElementById('detail-brand').textContent = product.brand;
+      document.getElementById('detail-category').textContent = catNames[product.category] || product.category;
+
+      if (product.original_price) {
+        document.getElementById('product-old-price').style.display = 'inline';
+        document.getElementById('product-old-price').textContent = formatPrice(product.original_price);
+        const disc = Math.round((1 - product.price / product.original_price) * 100);
+        document.getElementById('product-discount').style.display = 'inline';
+        document.getElementById('product-discount').textContent = '-' + disc + '%';
+      }
+
+      // Main image
+      document.getElementById('main-img').src = product.image_url;
+      document.getElementById('main-img').alt = product.name;
+
+      // Thumbnails (use same image with different crops)
+      const crops = ['&crop=top', '&crop=bottom', '&crop=left', '&crop=right'];
+      const baseUrl = product.image_url.split('?')[0];
+      const thumbsHtml = [product.image_url, ...crops.map(c => baseUrl + '?w=200&h=200&fit=crop' + c)].slice(0,4).map((url, i) => `
+        <div class="thumb ${i===0?'active':''}" onclick="changeMainImg('${url}', this)">
+          <img src="${url}" alt="" onerror="this.parentElement.style.display='none'">
+        </div>`).join('');
+      document.getElementById('thumbnails').innerHTML = thumbsHtml;
+
+      // Sizes
+      const sizes = JSON.parse(product.sizes || '[]');
+      document.getElementById('detail-sizes').textContent = sizes.join(', ') || 'Único';
+      if (sizes.length === 0 || (sizes.length === 1 && sizes[0] === 'Único')) {
+        document.getElementById('size-section').style.display = 'none';
+        selectedSize = 'Único';
+      } else {
+        document.getElementById('size-selector').innerHTML = sizes.map(s => `
+          <button class="size-btn" onclick="selectSize('${s}', this)">${s}</button>`).join('');
+      }
+    }
+
+    function changeMainImg(url, thumb) {
+      document.getElementById('main-img').src = url;
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    }
+
+    function selectSize(size, btn) {
+      selectedSize = size;
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    }
+
+    function changeQty(delta) {
+      quantity = Math.max(1, Math.min(10, quantity + delta));
+      document.getElementById('qty-display').textContent = quantity;
+    }
+
+    async function handleAddToCart() {
+      const sizes = product ? JSON.parse(product.sizes || '[]') : [];
+      if (sizes.length > 1 && !selectedSize) {
+        CartState.showToast('Selecione um tamanho!', 'error');
+        document.getElementById('size-selector').style.border = '1px solid #FF1493';
+        document.getElementById('size-selector').style.borderRadius = '8px';
+        document.getElementById('size-selector').style.padding = '8px';
+        setTimeout(() => { document.getElementById('size-selector').style.border = ''; document.getElementById('size-selector').style.padding = ''; }, 2000);
+        return;
+      }
+      const btn = document.getElementById('add-cart-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ph-bold ph-check"></i> ADICIONADO!';
+      btn.style.background = 'linear-gradient(135deg, #39FF14, #00D4FF)';
+      btn.style.color = '#0a0a0a';
+      await CartState.add(product.id, selectedSize, quantity);
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="ph-bold ph-shopping-cart"></i> ADICIONAR AO CARRINHO';
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 2000);
+    }
+
+    function showTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', ['desc','details','reviews'][i] === tab));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+    }
+
+    function renderProductCard(p) {
+      const discount = p.original_price ? Math.round((1 - p.price / p.original_price) * 100) : 0;
+      return `
+        <div class="product-card">
+          <div class="product-img-wrap">
+            ${p.badge ? `<span class="badge badge-${p.badge.toLowerCase()}">${p.badge}</span>` : ''}
+            <img src="${p.image_url}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x400/14141f/7B2FBE?text=MP'">
+            <button class="quick-add-btn" onclick="event.stopPropagation();CartState.add(${p.id},null,1)">
+              <i class="ph-bold ph-shopping-cart"></i> ADICIONAR
+            </button>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">${p.brand}</span>
+            <h3 class="product-name"><a href="/produto.html?id=${p.id}">${p.name}</a></h3>
+            <div class="product-pricing">
+              <span class="product-price">${formatPrice(p.price)}</span>
+              ${p.original_price ? `<span class="product-old-price">${formatPrice(p.original_price)}</span>` : ''}
+              ${discount > 0 ? `<span class="discount-badge">-${discount}%</span>` : ''}
+            </div>
+          </div>
+        </div>`;
+    }
+
+    async function loadRelated() {
+      try {
+        const data = await ProductsAPI.getAll({ category: product.category, limit: 4 });
+        const products = (data.products || []).filter(p => p.id != productId).slice(0, 4);
+        document.getElementById('related-grid').innerHTML = products.map(renderProductCard).join('');
+      } catch(e) {}
+    }
+
+    document.addEventListener('DOMContentLoaded', loadProduct);
+  </script>
+</body>
+</html>
